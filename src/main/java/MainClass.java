@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by hadoop on 6/13/16.
@@ -26,6 +27,10 @@ public class MainClass {
         Logger logger = Logger.getLogger(MainClass.class);
         logger.info("This is my blog log line");
         String getenv = System.getenv("server.port");
+        Map<String, String> getenv1 = System.getenv();
+        for (String key : getenv1.keySet()) {
+            System.out.println(key + ":" + getenv1.get(key));
+        }
         System.out.println(getenv);
         int port = Integer.parseInt(getenv);
         Server server = new Server(port);
