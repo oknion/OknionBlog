@@ -1,1 +1,1 @@
-web: java -jar build/libs/oknionblog-1.0-SNAPSHOT.jar
+web: java -Dserver.port=$PORT  -jar build/libs/oknionblog-1.0-SNAPSHOT.jar

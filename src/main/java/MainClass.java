@@ -25,19 +25,20 @@ public class MainClass {
 
         Logger logger = Logger.getLogger(MainClass.class);
         logger.info("This is my blog log line");
-        String getenv = System.getenv("serverport");
+        String getenv = System.getenv("server.port");
         System.out.println(getenv);
-//        int port = Integer.parseInt(getenv);
-        Server server = new Server(8027);
+        int port = Integer.parseInt(getenv);
+        Server server = new Server(port);
 //        ResourceHandler resourceHandler = new ResourceHandler();
 //        resourceHandler.setResourceBase(".");
 
 
-        ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
+//        ContextHandlerCollection contextHandlerCollection = new ContextHandlerCollection();
         ServletContextHandler servletContextHandler = new ServletContextHandler();
-        servletContextHandler.addServlet(new ServletHolder(new HelloServlet()), "/");
-        contextHandlerCollection.setHandlers(new Handler[]{servletContextHandler});
-        server.setHandler(contextHandlerCollection);
+        servletContextHandler.setContextPath("/");
+        servletContextHandler.addServlet(new ServletHolder(new HelloServlet()), "/*");
+//        contextHandlerCollection.setHandlers(new Handler[]{servletContextHandler});
+        server.setHandler(servletContextHandler);
         server.start();
 
         server.join();
@@ -50,7 +51,12 @@ class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().write("Hello Servlet!!");
-        super.doGet(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().write("Hello Servlet!!");
+
     }
 }
 
