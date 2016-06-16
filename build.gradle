@@ -23,6 +23,9 @@ dependencies {
     compile 'log4j:log4j:1.2.17'
     // http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.3.8.v20160314'
+    // http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
+    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.3.8.v20160314'
+
 
 }
 
