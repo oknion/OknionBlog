@@ -26,12 +26,8 @@ public class MainClass {
 
         Logger logger = Logger.getLogger(MainClass.class);
         logger.info("This is my blog log line");
-        String getenv = System.getenv("server.port");
-        Map<String, String> getenv1 = System.getenv();
-        for (String key : getenv1.keySet()) {
-            System.out.println(key + ":" + getenv1.get(key));
-        }
-        System.out.println(getenv);
+        String getenv = System.getenv("PORT");
+
         int port = Integer.parseInt(getenv);
         Server server = new Server(port);
 //        ResourceHandler resourceHandler = new ResourceHandler();
